@@ -1,8 +1,7 @@
-node_modules
-# Dependency directories
+# Dependency directory
 node_modules
 
-# compiled output
+# Compiled output
 /dist
 
 # IDE - VSCode
