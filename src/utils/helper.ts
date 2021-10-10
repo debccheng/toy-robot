@@ -49,15 +49,16 @@ export const bulkAppendById = (
 // #endregion
 
 // #region - Format user input
+export const formatUserInput = (input: string): string => {
+  return input.toLowerCase().replace(/\s/g, '');
+}
 // Format Place(x, y, direction)
 export const formatPlaceCommands = (
   input: string
 ): Position | null => {
-  const formattedInput = input.toLowerCase();
   const index = input.indexOf(')');
-  const placeCommands = formattedInput
+  const placeCommands = input
     .substring(6, index) // x, y, direction
-    .replace(/\s*/g, '')
     .split(',');
   
   if (placeCommands.length !== 3 || !placeCommands[2]) {

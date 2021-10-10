@@ -22,12 +22,17 @@ button {
   font-size: 16px;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 input {
   font-size: 16px;
-  margin-block: 4px;
+  margin-block-start: 4px;
   width: 248px;
   height: 38px;
-  border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   border: 1px solid black;
 }
 
@@ -52,7 +57,8 @@ main {
   background-color: black;
   color: white;
   height: 44px;
-  border-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   border: 1px solid black;
   text-transform: uppercase;
 }
@@ -82,4 +88,11 @@ main {
   justify-content: center;
   align-items: center;
   font-size: 32px;
+}
+
+#error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 12px;
+  line-height: 0.4;
 }

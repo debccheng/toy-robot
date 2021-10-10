@@ -4,6 +4,7 @@ import {
   commandInputAttributes,
   commandLabelAttributes,
   commandSubmitButtonAttributes,
+  errorMessageAttributes,
   robotImageAttributes,
   titleAttributes,
 } from './elementAttributes';
@@ -28,6 +29,11 @@ commandLabel.textContent = 'Enter your command';
 export const commandTextInput = bulkSetAttributes(
   document.createElement('input'),
   commandInputAttributes,
+);
+
+export const commandErrorMessage = bulkSetAttributes(
+  document.createElement('div'),
+  errorMessageAttributes,
 );
 
 export const submitCommandButton = bulkSetAttributes(

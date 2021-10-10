@@ -1,7 +1,9 @@
 import { AttributeProps } from '../types';
 import {
+  commandErrorId,
   commandFormId,
   commandInputId,
+  submitButtonId,
 } from '../utils/constants';
 
 import robotImgUrl from '../assets/robot.png';
@@ -29,8 +31,12 @@ export const commandInputAttributes: Array<AttributeProps> = [
 
 export const commandSubmitButtonAttributes: Array<AttributeProps> = [
   { attribute: 'class', setAs: 'submit-button' },
-  { attribute: 'id', setAs: 'submit-command' },
+  { attribute: 'id', setAs: submitButtonId },
   { attribute: 'type', setAs: 'submit' },
+];
+
+export const errorMessageAttributes: Array<AttributeProps> = [
+  { attribute: 'id', setAs: commandErrorId },
 ];
 
 export const robotImageAttributes: Array<AttributeProps> = [
