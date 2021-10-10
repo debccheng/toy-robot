@@ -1,7 +1,8 @@
-import { AttributeProps } from '../types';
+import { AttributeProps, Position, Direction } from '../types';
 import { grid } from './config';
 import { mainId, gridId } from './constants';
 
+// #region - Grid creation in the DOM
 export const createGrid = () => {
   const gridContainer = document.createElement('div');
   gridContainer.id = gridId;
@@ -21,7 +22,9 @@ export const createGrid = () => {
     });
   });
 };
+// #endregion
 
+// #region - Helpers for creating and appending DOM elements
 export const bulkSetAttributes = (
   element: HTMLElement,
   attributes: Array<AttributeProps> = [],
@@ -43,3 +46,33 @@ export const bulkAppendById = (
 
   elementArray.forEach((element) => parent.appendChild(element));
 };
+// #endregion
+
+// #region - Format user input
+// Format Place(x, y, direction)
+export const formatPlaceCommands = (
+  input: string
+): Position | null => {
+  const formattedInput = input.toLowerCase();
+  const index = input.indexOf(')');
+  const placeCommands = formattedInput
+    .substring(6, index) // x, y, direction
+    .replace(/\s*/g, '')
+    .split(',');
+  
+  if (placeCommands.length !== 3 || !placeCommands[2]) {
+    console.warn(
+      `Expected 3 args: [x,y,direction] but instead got ${placeCommands}`
+    );
+    return null;
+  }
+
+  const position = {
+    x: +placeCommands[0],
+    y: +placeCommands[1],
+    facing: placeCommands[2] as Direction
+  };
+
+  return position;
+};
+// #endregion
