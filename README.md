@@ -1,8 +1,8 @@
 **Toy Robot**\
 Task details are from [ZONE](https://zone.github.io/frontend/toy-robot).\
-I have decided to use **vanilla JS/TS**.\
+I have decided to use **vanilla JS/TS**.
 
-**10/10/2021: Task is still WIP.**\
+**10/10/2021: Task is still WIP.**
 
 **What**
 * A toy robot on a table top
