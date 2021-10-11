@@ -94,5 +94,6 @@ main {
   color: red;
   font-size: 12px;
   margin-top: 12px;
-  line-height: 0.4;
+  line-height: 1;
+  max-width: 248px;
 }

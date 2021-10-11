@@ -61,13 +61,6 @@ export const formatPlaceCommands = (
     .substring(6, index) // x, y, direction
     .split(',');
   
-  if (placeCommands.length !== 3 || !placeCommands[2]) {
-    console.warn(
-      `Expected 3 args: [x,y,direction] but instead got ${placeCommands}`
-    );
-    return null;
-  }
-
   const position = {
     x: +placeCommands[0],
     y: +placeCommands[1],

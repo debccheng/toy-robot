@@ -8,7 +8,7 @@ import {
 import { formLayer, mainLayer } from './elements/layers';
 import { formatPlaceCommands, formatUserInput } from './utils/helper';
 import { place } from './utils/commands';
-import { initialValidate } from './utils/validation';
+import { validate } from './utils/validation';
 
 bulkAppendById(mainId, mainLayer);
 bulkAppendById(commandFormId, formLayer);
@@ -18,13 +18,13 @@ const commandForm = document.getElementById(commandFormId);
 const commandInput = document.getElementById(commandInputId) as HTMLInputElement;
 const commandErrorLog = document.getElementById(commandErrorId);
 
-const handleBlur = (e: Event) => {
+const handleKeyUp = (e: Event) => {
   const target = e.target as HTMLInputElement;
 
   if (target) {
-    const errorLog = initialValidate(target);
+    const errorLog = validate(target);
     if (errorLog && commandErrorLog) {
-      commandErrorLog.textContent = errorLog
+      commandErrorLog.textContent = errorLog;
     } else if (commandErrorLog) {
       commandErrorLog.textContent = '';
     }
@@ -44,4 +44,4 @@ const handleSubmit = (e: Event) => {
 };
 
 commandForm?.addEventListener('submit', handleSubmit);
-commandInput?.addEventListener('blur', handleBlur);
+commandInput?.addEventListener('keyup', handleKeyUp);

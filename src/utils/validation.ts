@@ -2,35 +2,84 @@ import { validCommands, validDirections } from './constants';
 
 const errors: Record<string, string> = {
   required: 'Please enter a command',
-  invalidFormat: 'Command format is not valid',
-  invalidCommand: 'Command type is not valid'
-}
+  invalidCommand: `
+    Invalid input. Valid commands: place(x, y, facing), left(), right(), move(), report()
+  `,
+  invalidPlaceCommand: `
+    Expected 3 args: [x, y, facing] for place command
+  `,
+  invalidXY: `
+    Please enter a number for [x, y]
+  `,
+  outOfBounds: `
+    Position out of bounds: value range of 1-5 required for [x, y]
+  `,
+  invalidDirection: `
+    Invalid direction as last arg. Valid directions: north, south, east, west
+  `,
+};
 
 const checkFormat = (input: string): void => {
   const placeRegex = /^place\(.+\)$/;
   const cmdRegex = /^\w+\(\)$/;
 
-  if (!((placeRegex).test(input)||(cmdRegex).test(input))) {
-    throw errors.invalidFormat;
+  console.log('cmd', (cmdRegex).test(input));
+  console.log('place', placeRegex.test(input));
+
+  if (!cmdRegex.test(input) && !placeRegex.test(input)) {
+    throw errors.invalidCommand;
   };
 };
 
 const checkCommand = (input: string): void => {
   if (!validCommands.has(input)) throw errors.invalidCommand;
-}
+};
 
-export const initialValidate = (target: HTMLInputElement): string | undefined => {
+const checkXYvalid = (coordinate: string): void => {
+  if (!(/\d+/).test(coordinate)) throw errors.invalidXY;
+};
+
+const checkOutOfBound = (coordinate: string): void => {
+  if (+coordinate > 5 || +coordinate < 1) throw errors.outOfBounds;
+};
+
+const checkDirection = (direction: string): void => {
+  if (!validDirections.has(direction)) throw errors.invalidDirection;
+};
+
+export const validate = (target: HTMLInputElement): string | undefined => {
   const { value: input } = target;
   if (!input) return errors.required;
 
-  const formattedInput = input.toLowerCase();
+  const lowercaseInput = input.toLowerCase();
 
   try {
-    checkFormat(formattedInput);
+    checkFormat(lowercaseInput);
 
-    const command = formattedInput.split('(')[0];
+    const command = lowercaseInput.split('(')[0];
     checkCommand(command);
+
+    if (command === 'place') {
+      const formattedInput = lowercaseInput.replace(/\s/g, '');
+      const index = formattedInput.indexOf(')');
+      const placeCommands = formattedInput
+        .substring(6, index) // x, y, direction
+        .split(',');
+      
+      console.log(placeCommands);
+      
+      if (placeCommands.length !== 3 || !placeCommands[2]) throw errors.invalidPlaceCommand;
+
+      const [x, y, direction] = placeCommands;
+      checkXYvalid(x);
+      checkXYvalid(y);
+
+      checkDirection(direction);
+
+      checkOutOfBound(x);
+      checkOutOfBound(y);
+    }
   } catch (error) {
     return error as string;
   }
-}
+};
