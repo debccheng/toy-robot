@@ -23,9 +23,6 @@ const checkFormat = (input: string): void => {
   const placeRegex = /^place\(.+\)$/;
   const cmdRegex = /^\w+\(\)$/;
 
-  console.log('cmd', (cmdRegex).test(input));
-  console.log('place', placeRegex.test(input));
-
   if (!cmdRegex.test(input) && !placeRegex.test(input)) {
     throw errors.invalidCommand;
   };
@@ -65,8 +62,7 @@ export const validate = (target: HTMLInputElement): string | undefined => {
       const placeCommands = formattedInput
         .substring(6, index) // x, y, direction
         .split(',');
-      
-      console.log(placeCommands);
+    
       
       if (placeCommands.length !== 3 || !placeCommands[2]) throw errors.invalidPlaceCommand;
 
