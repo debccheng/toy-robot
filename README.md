@@ -2,7 +2,17 @@
 Task details are from [ZONE](https://zone.github.io/frontend/toy-robot).\
 I have decided to use **vanilla JS/TS**.
 
-**10/10/2021: Task is still WIP.**
+**Logs**
+**11/10/2021:**
+* Draft `left()` and `right()`
+* Complete draft validation
+* Add CodeQL via github
+
+**10/10/2021:**
+* Setup environment - webpack, tsconfig, package.json
+* Add helper functions for DOM element creation and manipulation
+* Initialise grid
+* Draft `place(x, y, facing)` and validation
 
 **What**
 * A toy robot on a table top
