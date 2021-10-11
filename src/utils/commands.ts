@@ -36,8 +36,8 @@ export const place = (
 export const rotate = (leftOrRight: 'left()' | 'right()') => {
   const robot = document.getElementById(robotId);
   if (!robot || (leftOrRight !== 'left()' && leftOrRight !== 'right()')) return;
-  
-  const currentRotation = robot.style.transform.match(/\d+/);
+
+  const currentRotation = robot.style.transform.match(/[\-\d]+/);
   const rotationValue = currentRotation ? +currentRotation[0] : 0;
 
   if (leftOrRight === 'left()') {
