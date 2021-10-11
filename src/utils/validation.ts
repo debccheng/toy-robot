@@ -1,4 +1,4 @@
-import { validCommands, validDirections } from './constants';
+import { robotId, validCommands, validDirections } from './constants';
 
 const errors: Record<string, string> = {
   required: 'Please enter a command',
@@ -16,6 +16,9 @@ const errors: Record<string, string> = {
   `,
   invalidDirection: `
     Invalid direction as last arg. Valid directions: north, south, east, west
+  `,
+  robotNotFound: `
+    Please place robot on the grid first with place(x, y, facing)
   `,
 };
 
@@ -44,6 +47,13 @@ const checkDirection = (direction: string): void => {
   if (!validDirections.has(direction)) throw errors.invalidDirection;
 };
 
+const checkRobotIsPlaced = (input: string): void => {
+  if (validCommands.has(input) && !(/place/).test(input)) {
+    const robot = document.getElementById(robotId);
+    if (!robot) throw errors.robotNotFound;
+  }
+};
+
 export const validate = (target: HTMLInputElement): string | undefined => {
   const { value: input } = target;
   if (!input) return errors.required;
@@ -54,6 +64,7 @@ export const validate = (target: HTMLInputElement): string | undefined => {
     checkFormat(lowercaseInput);
 
     const command = lowercaseInput.split('(')[0];
+    checkRobotIsPlaced(command);
     checkCommand(command);
 
     if (command === 'place') {

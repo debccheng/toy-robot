@@ -6,6 +6,8 @@ export const commandFormId = 'command-form';
 
 export const commandInputId = 'command-input';
 
+export const robotId = 'robot';
+
 export const submitButtonId = 'submit-command';
 
 export const gridId = 'grid';

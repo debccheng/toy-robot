@@ -3,6 +3,7 @@ import {
   commandErrorId,
   commandFormId,
   commandInputId,
+  robotId,
   submitButtonId,
 } from '../utils/constants';
 
@@ -43,5 +44,5 @@ export const robotImageAttributes: Array<AttributeProps> = [
   { attribute: 'alt', setAs: 'robot' },
   { attribute: 'src', setAs: robotImgUrl },
   { attribute: 'height', setAs: '40px' },
-  { attribute: 'id', setAs: 'robot' },
+  { attribute: 'id', setAs: robotId },
 ];
