@@ -15,9 +15,10 @@ export const createGrid = () => {
     rowDiv.id = `row-${index + 1}`;
     document.getElementById('grid')?.appendChild(rowDiv);
 
-    row.forEach(() => {
+    row.forEach((_, rowIndex) => {
       const cellDiv = document.createElement('div');
       cellDiv.className = 'cell';
+      cellDiv.innerText = `${rowIndex + 1},${5 - index}`
       document.querySelectorAll('.row')[index]?.appendChild(cellDiv);
     });
   });

@@ -79,15 +79,19 @@ main {
 }
 
 .cell {
+  position: relative;
   width: 72px;
   height: 72px;
   background-color: cornflowerblue;
+  color: whitesmoke;
   margin: 4px;
+  padding: 2px;
   border-radius: 4px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 8px;
+  box-sizing: border-box;
 }
 
 #error-message {
@@ -96,4 +100,12 @@ main {
   margin-top: 12px;
   line-height: 1;
   max-width: 248px;
+}
+
+#robot {
+  position: absolute;
+  top: 16px;
+  left: 23px;
+  z-index: 1;
+  filter: invert();
 }
