@@ -30,6 +30,11 @@ I have decided to use **vanilla JS/TS**.
 **Log**
 
 *11/10/2021:*
+* Set custom attribute to robot element for setting position, but might need to look more closely into this and revise?
+* Set initial values for position
+* Allow updates to position after calling `place(x, y, facing)`, `left()`, and `right()`
+
+*11/10/2021:*
 * Draft `left()` and `right()`
 * Complete draft validation
 * Add CodeQL via github
