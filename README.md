@@ -1,8 +1,6 @@
-**Toy Robot**\
+## Toy Robot
 Task details are from [ZONE](https://zone.github.io/frontend/toy-robot).\
 I have decided to use **vanilla JS/TS**.
-
-**10/10/2021: Task is still WIP.**
 
 **What**
 * A toy robot on a table top
@@ -27,3 +25,17 @@ I have decided to use **vanilla JS/TS**.
     * Rotate the robot 90° clockwise.
 * `report()`
     * Outputs the robot's current grid location and facing direction.
+
+---
+**Log**
+
+*11/10/2021:*
+* Draft `left()` and `right()`
+* Complete draft validation
+* Add CodeQL via github
+
+*10/10/2021:*
+* Setup environment - webpack, tsconfig, package.json
+* Add helper functions for DOM element creation and manipulation
+* Initialise grid
+* Draft `place(x, y, facing)` and validation
