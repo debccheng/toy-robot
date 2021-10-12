@@ -1,12 +1,12 @@
 import { robot } from "../elements/elements";
 import updatePosition from "../state/update";
-import { Position, RobotElement, RobotPosition, TurnDirection } from "../types"
+import { Command, Position, RobotElement, RobotPosition, TurnDirection } from "../types"
 import { robotId } from "./constants";
-import { getNewDirection } from "./helper";
+import { getNewDirection, isObjEmpty } from "./helper";
 
 export const place = (
   { x, y, facing: direction }: Position
-) => {
+): void => {
   const rows = document.querySelectorAll('.row');
 
   const adjustedX = x - 1;
@@ -52,13 +52,13 @@ export const place = (
       }, robot);
       break;
     default:
-      return null;
+      return;
   }
 
   if (cell) cell.appendChild(robot);
 };
 
-export const rotate = (leftOrRight: TurnDirection) => {
+export const rotate = (leftOrRight: TurnDirection): void => {
   const robot: RobotElement | null = document.getElementById(robotId);
   if (!robot || (leftOrRight !== 'left()' && leftOrRight !== 'right()')) return;
 
@@ -90,4 +90,14 @@ export const rotate = (leftOrRight: TurnDirection) => {
       robot
     );
   }
+}
+
+export const report = (): void => {
+  const robot: RobotElement | null = document.getElementById(robotId);
+  if (!robot) return;
+
+  const robotAttribute = robot.getAttribute('robotPosition');
+  const position: RobotPosition = robotAttribute ? JSON.parse(robotAttribute) : null;
+
+  if (!isObjEmpty(position)) console.log(position)
 }

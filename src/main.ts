@@ -7,7 +7,7 @@ import {
 } from './utils/constants';
 import { formLayer, mainLayer } from './elements/layers';
 import { formatPlaceCommands, formatUserInput } from './utils/helper';
-import { place, rotate } from './utils/commands';
+import { place, report, rotate } from './utils/commands';
 import { validate } from './utils/validation';
 
 bulkAppendById(mainId, mainLayer);
@@ -40,6 +40,11 @@ const handleSubmit = (e: Event) => {
 
     if (userInput === 'left()' || userInput === 'right()') {
       rotate(userInput);
+      return;
+    }
+
+    if (userInput === 'report()') {
+      report();
       return;
     }
 

@@ -7,13 +7,13 @@ export type Direction = 'north' | 'south' | 'east' | 'west';
 
 export type Command = 'place' | 'move' | 'left' | 'right' | 'report';
 
+export type TurnDirection = `${Extract<Command, 'left' | 'right'>}()`;
+
 export interface Position {
   x: number
   y: number
   facing: Direction;
 }
-
-export type TurnDirection = 'left()' | 'right()';
 
 export interface RobotPosition extends Position {
   rotation: number;

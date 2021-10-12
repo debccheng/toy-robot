@@ -2,6 +2,10 @@ import { AttributeProps, Position, Direction, TurnDirection } from '../types';
 import { grid } from './config';
 import { mainId, gridId } from './constants';
 
+export const isObjEmpty = (obj: Record<any, any>): boolean => {
+  return Object.keys(obj).length === 0 && obj.constructor === Object;
+}
+
 // #region - Helpers for creating and appending DOM elements
 export const createGrid = () => {
   const gridContainer = document.createElement('div');

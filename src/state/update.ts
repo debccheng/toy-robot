@@ -1,4 +1,5 @@
 import { RobotElement, RobotPosition } from "../types";
+import { isObjEmpty } from "../utils/helper";
 
 const updatePosition = (
   newPosition: Partial<RobotPosition>,
@@ -9,7 +10,7 @@ const updatePosition = (
     ? JSON.parse(robotAttribute as string)
     : null;
 
-  if (prevPosition != null) {
+  if (!isObjEmpty(prevPosition)) {
     const updatedPosition = {
       ...prevPosition,
       x: newPosition?.x ?? prevPosition.x,
