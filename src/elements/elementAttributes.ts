@@ -6,7 +6,7 @@ import {
   robotId,
   submitButtonId,
 } from '../utils/constants';
-
+import initialPosition from '../state/initial';
 import robotImgUrl from '../assets/robot.png';
 
 export const titleAttributes: Array<AttributeProps> = [
@@ -40,9 +40,11 @@ export const errorMessageAttributes: Array<AttributeProps> = [
   { attribute: 'id', setAs: commandErrorId },
 ];
 
-export const robotImageAttributes: Array<AttributeProps> = [
+export const robotAttributes: Array<AttributeProps> = [
   { attribute: 'alt', setAs: 'robot' },
   { attribute: 'src', setAs: robotImgUrl },
   { attribute: 'height', setAs: '40px' },
   { attribute: 'id', setAs: robotId },
+
+  { attribute: 'robotPosition', setAs: JSON.stringify(initialPosition)}
 ];

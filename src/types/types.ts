@@ -12,3 +12,13 @@ export interface Position {
   y: number
   facing: Direction;
 }
+
+export type TurnDirection = 'left()' | 'right()';
+
+export interface RobotPosition extends Position {
+  rotation: number;
+}
+
+export interface RobotElement extends HTMLElement {
+  robotPosition?: RobotPosition;
+}

@@ -1,8 +1,8 @@
-import { AttributeProps, Position, Direction } from '../types';
+import { AttributeProps, Position, Direction, TurnDirection } from '../types';
 import { grid } from './config';
 import { mainId, gridId } from './constants';
 
-// #region - Grid creation in the DOM
+// #region - Helpers for creating and appending DOM elements
 export const createGrid = () => {
   const gridContainer = document.createElement('div');
   gridContainer.id = gridId;
@@ -23,9 +23,7 @@ export const createGrid = () => {
     });
   });
 };
-// #endregion
 
-// #region - Helpers for creating and appending DOM elements
 export const bulkSetAttributes = (
   element: HTMLElement,
   attributes: Array<AttributeProps> = [],
@@ -52,8 +50,9 @@ export const bulkAppendById = (
 // #region - Format user input
 export const formatUserInput = (input: string): string => {
   return input.toLowerCase().replace(/\s/g, '');
-}
-// Format Place(x, y, direction)
+};
+
+// Format command place(x, y, direction)
 export const formatPlaceCommands = (
   input: string
 ): Position | null => {
@@ -70,4 +69,21 @@ export const formatPlaceCommands = (
 
   return position;
 };
+// #endregion
+
+// #region - Get new direction after turning let or right
+export const getNewDirection = (
+  prevDirection: Direction,
+  LeftOrRight: TurnDirection
+): Direction => {
+  const circularDirections: Array<Direction> = ['north', 'east', 'south', 'west'];
+  const length = circularDirections.length;
+  const index = circularDirections.indexOf(prevDirection);
+  const turn = LeftOrRight === 'left()' ? -1 : 1;
+  const newIndex = index + turn;
+
+  if (newIndex < 0) return circularDirections[length + newIndex];
+
+  return circularDirections[newIndex];
+}
 // #endregion

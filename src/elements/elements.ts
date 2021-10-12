@@ -1,3 +1,4 @@
+import { RobotElement } from '../types';
 import { bulkSetAttributes } from '../utils/helper';
 import {
   commandFormAttributes,
@@ -5,7 +6,7 @@ import {
   commandLabelAttributes,
   commandSubmitButtonAttributes,
   errorMessageAttributes,
-  robotImageAttributes,
+  robotAttributes,
   titleAttributes,
 } from './elementAttributes';
 
@@ -42,8 +43,8 @@ export const submitCommandButton = bulkSetAttributes(
 );
 submitCommandButton.textContent = 'go';
 
-export const robotImage= bulkSetAttributes(
+export const robot: RobotElement = bulkSetAttributes(
   document.createElement('img'),
-  robotImageAttributes,
+  robotAttributes,
 );
 
