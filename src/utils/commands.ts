@@ -1,7 +1,7 @@
 import { robot } from "../elements/elements";
 import updatePosition from "../state/update";
-import { Command, Position, RobotElement, RobotPosition, TurnDirection } from "../types"
-import { robotId } from "./constants";
+import { Position, RobotElement, RobotPosition, TurnDirection } from "../types"
+import { positionReportId, robotId } from "./constants";
 import { getNewDirection, isObjEmpty } from "./helper";
 
 export const place = (
@@ -94,10 +94,17 @@ export const rotate = (leftOrRight: TurnDirection): void => {
 
 export const report = (): void => {
   const robot: RobotElement | null = document.getElementById(robotId);
-  if (!robot) return;
+  const positionSection = document.getElementById(positionReportId);
+  if (!robot || !positionSection) return;
 
   const robotAttribute = robot.getAttribute('robotPosition');
   const position: RobotPosition = robotAttribute ? JSON.parse(robotAttribute) : null;
 
-  if (!isObjEmpty(position)) console.log(position)
+  if (!isObjEmpty(position)) {
+    const { x, y, facing: direction } = position;
+    positionSection.innerText = `
+      Coordinates: (${x},${y})\n
+      Facing: ${direction}
+    `;
+  }
 }

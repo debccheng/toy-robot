@@ -3,6 +3,7 @@ import {
   commandErrorId,
   commandFormId,
   commandInputId,
+  positionReportId,
   robotId,
   submitButtonId,
 } from '../utils/constants';
@@ -47,4 +48,8 @@ export const robotAttributes: Array<AttributeProps> = [
   { attribute: 'id', setAs: robotId },
 
   { attribute: 'robotPosition', setAs: JSON.stringify(initialPosition)}
+];
+
+export const positionReportAttributes: Array<AttributeProps> = [
+  { attribute: 'id', setAs: positionReportId }
 ];

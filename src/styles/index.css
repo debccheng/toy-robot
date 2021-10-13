@@ -109,3 +109,12 @@ main {
   z-index: 1;
   filter: invert();
 }
+
+#position-report {
+  font-size: 16px;
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-transform: capitalize;
+}

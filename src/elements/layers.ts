@@ -5,9 +5,14 @@ import {
   commandTextInput,
   title,
   submitCommandButton,
+  positionReport,
 } from './elements';
 
-export const mainLayer = [title, commandForm];
+export const mainLayer = [
+  title,
+  commandForm,
+  positionReport
+];
 
 export const formLayer = [
   commandLabel,

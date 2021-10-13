@@ -10,6 +10,8 @@ export const robotId = 'robot';
 
 export const submitButtonId = 'submit-command';
 
+export const positionReportId = 'position-report'
+
 export const gridId = 'grid';
 
 export const validDirections = new Set(['north', 'south', 'west', 'east']);

@@ -6,6 +6,7 @@ import {
   commandLabelAttributes,
   commandSubmitButtonAttributes,
   errorMessageAttributes,
+  positionReportAttributes,
   robotAttributes,
   titleAttributes,
 } from './elementAttributes';
@@ -46,5 +47,10 @@ submitCommandButton.textContent = 'go';
 export const robot: RobotElement = bulkSetAttributes(
   document.createElement('img'),
   robotAttributes,
+);
+
+export const positionReport = bulkSetAttributes(
+  document.createElement('section'),
+  positionReportAttributes
 );
 
