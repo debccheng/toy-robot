@@ -27,7 +27,11 @@ I have decided to use **vanilla JS/TS**.
     * Outputs the robot's current grid location and facing direction.
 
 ---
-**Log**
+**Log**\
+*19/10/2021:*
+* Draft `move()`
+* Need to check if robot out of bound and clean up
+
 *13/10/2021:*
 * Display position/updated position in a `<section />`
 
