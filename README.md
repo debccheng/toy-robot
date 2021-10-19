@@ -28,6 +28,8 @@ I have decided to use **vanilla JS/TS**.
 
 ---
 **Log**
+*13/10/2021:*
+* Display position/updated position in a `<section />`
 
 *12/10/2021:*
 * Set custom attribute to robot element for setting position, but might need to look more closely into this and revise?
