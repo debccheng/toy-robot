@@ -7,7 +7,7 @@ import {
 } from './utils/constants';
 import { formLayer, mainLayer } from './elements/layers';
 import { formatPlaceCommands, formatUserInput } from './utils/helper';
-import { place, report, rotate } from './utils/commands';
+import { move, place, report, rotate } from './utils/commands';
 import { validate } from './utils/validation';
 
 bulkAppendById(mainId, mainLayer);
@@ -45,6 +45,11 @@ const handleSubmit = (e: Event) => {
 
     if (userInput === 'report()') {
       report();
+      return;
+    }
+
+    if (userInput === 'move()') {
+      move();
       return;
     }
 

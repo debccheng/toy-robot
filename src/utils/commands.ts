@@ -108,3 +108,50 @@ export const report = (): void => {
     `;
   }
 }
+
+export const move = (): void => {
+  const robot: RobotElement | null = document.getElementById(robotId);
+  if (!robot) return;
+
+  const robotAttribute = robot.getAttribute('robotPosition');
+  const position: RobotPosition = robotAttribute ? JSON.parse(robotAttribute) : null;
+
+  const { x, y, facing: direction } = position;
+  const adjustedX = x - 1;
+  const adjustedY = 5 - y;
+
+  const rows = document.querySelectorAll('.row');
+
+  switch (true) {
+    case direction === 'north':
+      updatePosition({
+        y: (y + 1) <= 5 ? y + 1 : y,
+      }, robot);
+      const northCell = rows[adjustedY - 1].children.item(adjustedX);
+      if (northCell) northCell.appendChild(robot);
+      break;
+    case direction === 'south':
+      updatePosition({
+        y: (y - 1) > 0 ? y - 1 : y,
+      }, robot);
+      const southCell = rows[adjustedY + 1].children.item(adjustedX);
+      if (southCell) southCell.appendChild(robot);
+      break;
+    case direction === 'west':
+      updatePosition({
+        x: (x - 1) > 0 ? x - 1 : x,
+      }, robot);
+      const westCell = rows[adjustedY].children.item(adjustedX - 1);
+      if (westCell) westCell.appendChild(robot);
+      break;
+    case direction === 'east':
+      updatePosition({
+        x: (x + 1) <= 5 ? x + 1 : x,
+      }, robot);
+      const eastCell = rows[adjustedY].children.item(adjustedX + 1);
+      if (eastCell) eastCell.appendChild(robot);
+      break;
+    default:
+      return
+  }
+}
